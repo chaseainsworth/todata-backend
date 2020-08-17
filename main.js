@@ -1,19 +1,149 @@
+const todos = [
+  {
+  text: 'Christmas shopping',
+  id: 0,
+  complete: false,
+  priority: 1,
+},
+{
+  text: `make doctor's appointment`,
+  id: 1,
+  complete: true,
+  priority: 2,
+},
+{
+  text: 'binge watch The Office',
+  id: 2,
+  complete: false,
+  priority: 2,
+},
+{
+  text: 'research dinosaurs',
+  id: 3,
+  complete: false,
+  priority: 1,
+},
+{
+  text: 'fire Colin',
+  id: 4,
+  complete: true,
+  priority: 2,
+},
+{
+  text: 'start novel',
+  id: 5,
+  complete: true,
+  priority: 1,
+},
+]
 /********************
  * HELPER FUNCTIONS *
  ********************/
+// const todos = require('./main.test.js')
 
+const getTodoName = function(todos) {
+  return todos.text;
+}
 
+const getPriority = function(todos) {
+  return todos.priority;
+}
 
+const isComplete = function(todos) {
+  return todos.complete;
+}
 
+const isHighPriority = function(todos) {
+  if (getPriority(todos) === 2) {
+    return true;
+  } else {
+    return false;
+  }
+}
 
+const names = function(todos) {
+  return todos.map(getTodoName);
+}
 
-
-
-
+const priorities = function(todos) {
+  return todos.map(getPriority);
+}
 
 /***********************
  * ITERATION FUNCTIONS *
  ***********************/
+
+const namesAndPriorities = function(todos) {
+  let result = []
+  
+  for (let i = 0; i < todos.length; i++) {
+
+    let names = getTodoName(todos[i]);
+    
+    let priority = ''
+
+    if (getPriority(todos[i]) === 1) {
+      priority = "Low";
+    } else if (getPriority(todos[i]) === 2) {
+      priority = "High";
+    }
+    result.push(names + ' - ' + priority);
+  }
+  
+  return result;
+  }
+
+
+const justNotComplete = function(todos) {
+  let result = [];
+
+  for (let i = 0; i < todos.length; i++) {
+    if (isComplete(todos[i]) === false) {
+      result.push(todos[i])
+    }
+  }
+  return result;
+}
+
+
+const justComplete = function(todos) {
+  let result = [];
+
+  for (let i = 0; i < todos.length; i++) {
+    if (isComplete(todos[i]) === true) {
+      result.push(todos[i])
+    }
+  }
+  return result;
+}
+
+
+const priority2Only = function(todos) {
+  results = [];
+
+  for (let i = 0; i < todos.length; i++) {
+    if (getPriority(todos[i]) === 2) {
+      results.push(todos[i])
+    }
+  }
+  return results;
+}
+
+
+const priority1Only = function(todos) {
+  results = [];
+
+  for (let i = 0; i < todos.length; i++) {
+    if (getPriority(todos[i]) === 1) {
+      results.push(todos[i])
+    }
+  }
+  return results;
+}
+
+
+
+
 
 
 
